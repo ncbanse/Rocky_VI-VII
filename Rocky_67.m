@@ -41,26 +41,10 @@ disp("Beta = " + b + " m/s PLS DOUBLE CHECK UNITS LATER");
 
 [t, theta] = load_pendulum_data();
 
-figure(3);
-clf(3);
-plot(t, theta, '-b', 'LineWidth', 1)
-xlabel('t (s)')
-ylabel('theta (radians)')
-title('raw gyro data')
-grid on
-
 mask = (t >= 5) & (t <= 25) & (theta <= -2);
 
 t_sel = t(mask); t_sel = t_sel   - t_sel(1);
-theta_sel = y(mask);
-
-figure(4);
-clf(4);
-plot(t_sel, theta_sel, '-b', 'LineWidth', 1)
-xlabel('t (s)')
-ylabel('theta (radians)')
-title('cropped gyro data')
-grid on
+theta_sel = theta(mask);
 
 [~,locs] = findpeaks(theta_sel, t_sel, 'MinPeakProminence', 0.12);
 periods = diff(locs);
@@ -69,12 +53,15 @@ fn_time = (2*pi)/mean(periods);
 
 length = 9.8/(fn_time^2);
 
-figure(5);
-clf(5);
+figure(3);
+clf(3);
 plot(t_sel,theta_sel), hold on
 plot(locs, interp1(t_sel,theta_sel,locs), 'ro')
 xlabel('Time (s)'), ylabel('Signal'), title(sprintf('Freq ≈ %.3f Hz',fn_time))
 grid on, hold off
 
-disp("natural frequency = " + fn_time + " rad/s")
-disp("length = " + length + " m")
+disp("Natural Frequency = " + fn_time + " rad/s")
+disp("Effective Length = " + length + " m")
+
+%% c.
+
