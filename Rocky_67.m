@@ -41,14 +41,6 @@ disp("Beta = " + b + " m/s PLS DOUBLE CHECK UNITS LATER");
 
 [t, theta] = load_pendulum_data();
 
-figure(3);
-clf(3);
-plot(t, theta, '-b', 'LineWidth', 1)
-xlabel('t (s)')
-ylabel('theta (radians)')
-title('raw gyro data')
-grid on
-
 mask = (t >= 5) & (t <= 25) & (theta <= -2);
 
 t_sel = t(mask); t_sel = t_sel   - t_sel(1);
@@ -75,8 +67,8 @@ zeta = delta / sqrt(4*pi^2 + delta^2);
 
 omega_n = omega_d / sqrt(1 - zeta^2);
 
-figure(5);
-clf(5);
+figure(3);
+clf(3);
 plot(t_sel,theta_sel), hold on
 plot(locs, interp1(t_sel,theta_sel,locs), 'ro')
 xlabel('Time (s)'), ylabel('Signal'), title(sprintf('Freq ≈ %.3f Hz',omega_d))

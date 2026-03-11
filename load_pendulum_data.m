@@ -8,9 +8,9 @@ function [t, theta] = load_pendulum_data()
     %unpack the pendulum calibration data
     t = pendulum_data(:,1); theta = pendulum_data(:,2);
     %plot the motor calibration data
-    %figure(1);
-    %hold on
-    %plot(t,theta,'k','linewidth',1);
-    %xlabel('time (sec)'); ylabel('angle (rad)');
-    %title('Pendulum Calibration Data');
+    % figure(1);
+    % hold on
+    % plot(t,theta,'k','linewidth',1);
+    % xlabel('time (sec)'); ylabel('angle (rad)');
+    % title('Pendulum Calibration Data');
 end
