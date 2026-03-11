@@ -99,3 +99,18 @@ title(sprintf('ω_d = %.3f rad/s,  ζ = %.4f', omega_d, zeta))
 grid on
 hold off
 
+%% f.
+theta_r = 0; % Desired angle
+
+alpha = a; % from motor transfer func
+beta = b; % from motor transfer func
+omega_n % from pendulum fit
+leff = L; % from pendulum fit
+
+Kp = (leff / (alpha * beta)) * (alpha^2 / 3 + omega_n^2); % unitless
+Ki = (leff / (alpha * beta)) * (alpha^3 / 27 + alpha * omega_n^2); % unitless
+
+% Defining the square disturbance:
+dist_time = 1; % s
+dist_duration = .1; % s
+dist_magnitude = pi()/18; % rad
