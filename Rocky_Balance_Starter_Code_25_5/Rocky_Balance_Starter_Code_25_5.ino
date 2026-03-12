@@ -68,7 +68,7 @@ Balboa32U4Buzzer buzzer;
 Balboa32U4ButtonA buttonA;
 
 
-#define FIXED_ANGLE_CORRECTION (.276)  // ***** Replace the value 0.25 with the value you obtained from the Gyro calibration procedure
+#define FIXED_ANGLE_CORRECTION (.28)  // ***** Replace the value 0.25 with the value you obtained from the Gyro calibration procedure
 
 
 
@@ -86,17 +86,23 @@ void BalanceRocky()
 
     // **************Enter the control parameters here
    // Original values: 
-//  float Kp = 14559;
-//  float Ki = 72830;
-//  float Ci = -11615;   
-//  float Jp = 637.4284;
-//  float Ji = -18373;
-float Kp = 4403;
-float Ki = 1740;
-float Ji = -1920;
-float Jp = 228;
-float Ci = -2197;
+//float Kp = 30600;
+//float Ki = 153080;
+//float Ji = -24412;
+//float Jp = 1500.6;
+//float Ci = -38618;   
 
+//float Kp = 4685.8;
+//float Ki = 22060;
+//float Ji = -3207.9;
+//float Jp = 121.7574;
+//float Ci = -3432.7;
+
+float Kp = 3415.2;
+float Ki = 16031;
+float Ji = -2128.0;
+float Jp = 0;
+float Ci = -1904.1;
 
     float v_c_L, v_c_R; // these are the control velocities to be sent to the motors
     float v_d = 0; // this is the desired speed produced by the angle controller
@@ -112,7 +118,7 @@ float Ci = -2197;
    // dist_accum - integral of the distance
 
    // *** enter an equation for v_d in terms of the variables available ****
-    v_d = (-Kp * angle_rad - Ki * angle_rad_accum); // this is the desired velocity from the angle controller 
+    v_d = (Kp * angle_rad + Ki * angle_rad_accum); // this is the desired velocity from the angle controller 
       
 
   // The next two lines implement the feedback controller for the motor. Two separate velocities are calculated. 
@@ -123,9 +129,11 @@ float Ci = -2197;
 
   // *** enter equations for input signals for v_c (left and right) in terms of the variables available ****
   
-    v_c_R = -1 * v_d - (-Jp * (measured_speedR + measured_speedL) / 2 - Ji * (distRight_m + distLeft_m) / 2 - Ci * dist_accum);
-    v_c_L = -1 * v_d - (-Jp * (measured_speedR + measured_speedL) / 2 - Ji * (distRight_m + distLeft_m) / 2 - Ci * dist_accum);       
+    v_c_R = v_d - (Jp * (measured_speedR + measured_speedL) / 2 + Ji * (distRight_m + distLeft_m) / 2 + Ci * dist_accum);
+    v_c_L = v_d - (Jp * (measured_speedR + measured_speedL) / 2 + Ji * (distRight_m + distLeft_m) / 2 + Ci * dist_accum);       
 
+//    v_c_R = v_d - (Jp * measured_speedR + Ji * distRight_m - Ci * dist_accum);
+//    v_c_L = v_d - (Jp * measured_speedL + Ji * distLeft_m - Ci * dist_accum);
 
 
 

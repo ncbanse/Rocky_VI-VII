@@ -36,9 +36,9 @@ Mfb = M/(1+M*J);                % Black's formula to get tf for motor with PI fe
 % closed loop transfer function from disturbance d(t)totheta(t)
 % Hcloop = 1/(1-Hvtheta*M*K)    % use this for no motor feedback
 % with motor feedback
-Hcloop = 1/(1-Hvtheta*Mfb*K)    % use this for motor with feedback
+Hcloop = 1/(1-Hvtheta*Mfb*K);    % use this for motor with feedback
 
-pretty(simplify(Hcloop))       % to display the total transfer function
+pretty(simplify(Hcloop));       % to display the total transfer function
 
 % Substitute parameters and solve
 % system parameters
@@ -47,7 +47,7 @@ l = 0.4452;  %effective length
 a = 20.6731;           %nominal motor parameters
 b = 0.001719;        %nominal motor parameters
 
-Hcloop_sub = subs(Hcloop) % sub parameter values into Hcloop
+Hcloop_sub = subs(Hcloop); % sub parameter values into Hcloop
 
 % specify locations of the target poles,
 % choose # based on order of Htot denominator
@@ -59,32 +59,32 @@ Hcloop_sub = subs(Hcloop) % sub parameter values into Hcloop
 % p4 = -8
 % p5 = -8.
 
-p1 = -.8 + 1.5*1i;   % dominant pole pair
-p2 = -.8 - 1.5*1i;    % dominant pole pair 
-p3 = -3.5;
-p4 = -25;    % dominant pole pair
-p5 = -14;     % dominant pole pair 
+p1 = -a/5 + 2*1i;   % dominant pole pair
+p2 = -a/5 - 2*1i;    % dominant pole pair 
+p3 = -a/5;
+p4 = -a/5;    % dominant pole pair
+p5 = -a/5;     % dominant pole pair 
 
 % target characteristic polynomial
 % if motor model (TF) is added, order of polynomial will increases
 % tgt_char_poly = (s-p1)*(s-p2)*(s-p3)
 
 % check polynomial-expand to fifth order 
-tgt_char_poly = (s-p1)*(s-p2)*(s-p3)*(s-p4)*(s-p5)
-exp_tgt_char_poly = expand(tgt_char_poly)
+tgt_char_poly = (s-p1)*(s-p2)*(s-p3)*(s-p4)*(s-p5);
+exp_tgt_char_poly = expand(tgt_char_poly);
 
 % get the denominator from Hcloop_sub
-[n d] = numden(Hcloop_sub)
+[n, d] = numden(Hcloop_sub);
 
 % find the coefficients of the denominator polynomial TF
-coeffs_denom = coeffs(d, s)
+coeffs_denom = coeffs(d, s);
 
 % divide though the coefficient of the highest power term
-coeffs_denom = coeffs(d, s)/(coeffs_denom(end))
+coeffs_denom = coeffs(d, s)/(coeffs_denom(end));
 % num_coeff_denom = length(coeffs_denom)
 
 % find coefficients of the target charecteristic polynomial
-coeffs_tgt = coeffs(tgt_char_poly, s)
+coeffs_tgt = coeffs(tgt_char_poly, s);
 % num_coeff_tgt = length(coeffs_tgt)
 
 % for check. reorder the coefficients to match the denomimator polynomial
@@ -92,7 +92,7 @@ for ii = 1:length(coeffs_denom)
     reord_coeffs_tgt(ii) = coeffs_tgt(length(coeffs_tgt) + 1 - ii);
 end
 % check roots of target polynomial-should be same as selected poles
-roots_target = vpa(roots(reord_coeffs_tgt),4)
+roots_target = vpa(roots(reord_coeffs_tgt),4);
 
 
 % solve the system of equations setting the coefficients of the
@@ -128,13 +128,13 @@ theta_r = 0; % Desired angle
 % 
 % % check poles should be same as chosen input poles 
 % check_closed_loop_poles = vpa (roots(subs(chk_coeffs_denom)), 4)
-
-% write out target polynomial 
+% 
+% % write out target polynomial 
 % bbb = vpa( expand( (s-check_closed_loop_poles(1))*(s-check_closed_loop_poles(2)) ...
 %     *(s-check_closed_loop_poles(3))*(s-check_closed_loop_poles(4)) ...
 %     *(s-check_closed_loop_poles(5)) ) )
-
-
+% 
+% 
 % 
 % % Plot impulse and step responses of closed-loop system
 %     TFstring = char(subs(Hcloop));
@@ -146,8 +146,8 @@ theta_r = 0; % Desired angle
 %     impulse(TFH);   %plot the impulse reponse
 %     figure(2)
 %     step(TFH)       %plot the step response
-% 
-% 
+
+
 
 
 
