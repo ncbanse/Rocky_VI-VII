@@ -44,8 +44,8 @@ pretty(simplify(Hcloop))       % to display the total transfer function
 % system parameters
 g = 9.81;
 l = 0.4452;  %effective length 
-a = 26.3886;           %nominal motor parameters
-b = 0.0028305;        %nominal motor parameters
+a = 20.6731;           %nominal motor parameters
+b = 0.001719;        %nominal motor parameters
 
 Hcloop_sub = subs(Hcloop) % sub parameter values into Hcloop
 

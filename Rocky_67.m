@@ -3,14 +3,14 @@
 clear;
 
 % Run the load motor data script
-[t, y_L, v_L, y_R, v_R] = load_motor_data();
+[T, y_L, v_L, y_R, v_R] = load_motor_data();
 
-t = t(101:200);
+t = T(192:291);
 t = t - t(1);
-y_L = y_L(101:200);
-v_L = v_L(101:200);
-y_R = y_R(101:200);
-v_R = v_R(101:200);
+y_L = y_L(192:291);
+v_L = v_L(192:291);
+y_R = y_R(192:291);
+v_R = v_R(192:291);
 
 % Calculate average wheel speed and command
 v_avg = (v_L + v_R) / 2;
@@ -109,6 +109,9 @@ leff = L % from pendulum fit
 
 Kp = (leff / (alpha * beta)) * (alpha^2 / 3 + omega_n^2); % unitless
 Ki = (leff / (alpha * beta)) * (alpha^3 / 27 + alpha * omega_n^2); % unitless
+
+disp("Kp = " + Kp);
+disp("Ki = " + Ki);
 
 % Defining the square disturbance:
 dist_time = 1; % s
