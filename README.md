@@ -13,3 +13,12 @@ FANTASTIC,
 INCREDIBLE,
 
 # Rocky VI-VII
+
+### Important Files
+
+[Main Matlab File](Rocky_67.md)
+
+[3 Pole Balance Code](Rocky_67.md)
+
+[5 Pole Balance Code](Rocky_67.md)
+
