@@ -22,3 +22,7 @@ INCREDIBLE,
 
 [5 Pole Balance Code - Rocky_Balance_Starter_Code_25_5](Rocky_Balance_Starter_Code_25_5/)
 
+[3 Pole Simulink - PI_67.slx](PI_67.slx)
+
+[5 Pole Simulink - PI_5_67.slx](PI_5_67.slx)
+
