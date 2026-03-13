@@ -16,9 +16,9 @@ INCREDIBLE,
 
 ### Important Files
 
-[Main Matlab File](Rocky_67.md)
+[Main Matlab File - Rocky_67.m](Rocky_67.m)
 
-[3 Pole Balance Code](Rocky_Balance_Starter_Code_25/)
+[3 Pole Balance Code - Rocky_Balance_Starter_Code_25](Rocky_Balance_Starter_Code_25/)
 
-[5 Pole Balance Code](Rocky_Balance_Starter_Code_25_5/)
+[5 Pole Balance Code - Rocky_Balance_Starter_Code_25_5](Rocky_Balance_Starter_Code_25_5/)
 
