@@ -18,7 +18,7 @@ INCREDIBLE,
 
 [Main Matlab File](Rocky_67.md)
 
-[3 Pole Balance Code](Rocky_67.md)
+[3 Pole Balance Code](Rocky_Balance_Starter_Code_25/)
 
-[5 Pole Balance Code](Rocky_67.md)
+[5 Pole Balance Code](Rocky_Balance_Starter_Code_25_5/)
 
