@@ -114,7 +114,7 @@ leff = l
 % Defining the square disturbance:
 dist_time = 1; % s
 dist_duration = .1; % s
-dist_magnitude = pi()/18; % rad
+dist_magnitude = pi()/90; % rad
 
 theta_r = 0; % Desired angle
 

@@ -19,7 +19,7 @@ function [t, y_L, v_L, y_R, v_R] = load_motor_data()
     hold on
     plot(t,v_L,'k','linewidth',1);
     plot(t,v_R,'r','linewidth',1);
-    xlabel('time (sec)'); ylabel('wheel speed (m/sec)');
+    xlabel('Time (sec)'); ylabel('Wheel speed (m/sec)');
     title('Motor Calibration Data');
     h1 = legend('Left Wheel','Right Wheel');
     set(h1,'location','southeast');
@@ -27,7 +27,7 @@ function [t, y_L, v_L, y_R, v_R] = load_motor_data()
     hold on
     plot(t,y_L,'k','linewidth',1);
     plot(t,y_R,'r--','linewidth',1);
-    xlabel('time (sec)'); ylabel('wheel command (-)');
+    xlabel('Time (sec)'); ylabel('Wheel command (-)');
     title('Motor Calibration Data');
     h2 = legend('Left Wheel','Right Wheel');
     set(h2,'location','southeast');
